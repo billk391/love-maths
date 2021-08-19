@@ -14,17 +14,27 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
+
+    runGame("addition");
+
 })
 
 /**
  * The main game "loop", called when the script is first loaded
  * and after the user's answer has been processed
  */
-function runGame() {
+function runGame(gameType) {
 
     // Creates two random numbers between 1 and 25
     let num1 = math.floor(math.random() * 25) + 1;
     let num2 = math.floor(math.random() * 25) + 1;
+
+    if (gametype==="addition") {
+        displayAdditionQuestion(num1, num2);
+    } else {
+        alert(`unknown game type: ${gametype}`);
+        throw `unknown game type: ${gametype}. Aborting!`;
+    }
 }
 
 function checkAnswer() {
@@ -43,8 +53,11 @@ function incrementWrongAnswer() {
 
 }
 
-function displayAdditionQuestion() {
-
+function displayAdditionQuestion(operand1, operand2) {
+    
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "+";
 }
 
 function displaySubractQuestion() {
